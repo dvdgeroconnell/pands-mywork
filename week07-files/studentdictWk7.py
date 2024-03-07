@@ -1,13 +1,20 @@
-# Program to implement parts 4 and 5 of weekly lab 05
+# Program to implement part 5 of lab 07 (save the students)
 # Author: David O'Connell  
+
+import json
+
+# use this file to save the students
+FILENAME = "students.json"
 
 # Function to print a menu of commands
 def displayMenu():
     print("What would you like to do?")
-    print("(a) Add new student")
-    print("(v) View students")
-    print("(q) Quit")
-    choice = input("Type one letter (a/v/q): ").strip()
+    print("\t(a) Add new student")
+    print("\t(v) View students")
+    print("\t(s) Save students")
+    print("\t(l) Load students")
+    print("\t(q) Quit")
+    choice = input("Type one letter (a/v/s/q): ").strip()
     return choice
     
 def doAdd(students):
@@ -17,23 +24,28 @@ def doAdd(students):
     print("Student:", new_student["name"])
     new_student["modules"] = readModules()
     students.append(new_student)
-    return
 
 def doView(students):
-    
     for student in students:
         print("Name:", student["name"])
         displayModules(student["modules"])
 
-    return
+def doSave(students):
+    with open(FILENAME, 'wt') as f:
+        json.dump(students,f)
+    with open(FILENAME, 'rt') as f:
+        print(json.load(f))
+
+def doLoad():
+    with open(FILENAME, 'rt') as f:
+        saved_students = json.load(f)
+        print(saved_students)
+    return saved_students
 
 def displayModules(modules):
-
     for module in modules:
         print("Course:",module["name"])
         print("Grade:",module["grade"])
-
-    return
 
 def readModules():
 
@@ -56,8 +68,6 @@ def readModules():
 
     return modules # return the list of dicts, each dict is a course and grade
 
-
-
 # main program
 
 students = []
@@ -70,45 +80,7 @@ while (choice) !="q":
         doAdd(students)
     elif choice =="v":
         doView(students)
-
-
-
-'''
-
-student = {
-    "name" : "Mary",
-    "courses" : [
-        {
-            "coursename":"Programming",
-            "grade":45
-        },
-        {
-            "coursename":"History",
-            "grade":99
-        }
-    ]
-}
-
-students.append(student)
-
-#print("student",student)
-#print("students",students)
-
-print("Student:", student["name"])
-
-for course in student["courses"]:
-    print("\t", course["coursename"], "\t:",course["grade"])
-
-new_course = 'a'
-while(new_course != ''):
-    new_course = input("Enter the next course name: ")
-    if new_course != '':
-        new_grade = input("Enter the grade: ")
-        student["courses"].append({"coursename":new_course, "grade":new_grade})
-
-print("Student:", student["name"])
-
-for course in student["courses"]:
-    print("\t", course["coursename"], "\t:",course["grade"])
-
-    '''
+    elif choice =="s":
+        doSave(students)
+    elif choice =="l":
+        students = doLoad()

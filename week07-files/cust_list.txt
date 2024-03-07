@@ -1,0 +1,1 @@
+{"name": "Mary", "amount": 78}{"name": "John", "amount": 59}
