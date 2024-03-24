@@ -54,4 +54,3 @@ if __name__ == '__main__':
     else:
         # If the exception was not thrown, we should throw an AssertionError
         assert False, "fibonacci missing ValueError"
-        
