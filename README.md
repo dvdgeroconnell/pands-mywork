@@ -6,4 +6,4 @@
 01-Mar-2024 - Week 6 updates - rough work trying out function syntax and structure  
 07-Mar-2024 - Week 7 updates - lab work on file handling, the student dict lab, counting e's in a text file  
 15-Mar-2024 - Week 8 updates - lab work on calculations and plots, numPy and matplotlib  
-24-Mar-2024 - Week 9 updates - lab code / files on error handling, testing logging
+24-Mar-2024 - Week 9 updates - lab code / files on error handling, testing logging  
