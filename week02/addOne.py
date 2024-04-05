@@ -4,4 +4,4 @@
 
 num = int(input('Type a number to increment: '))
 newNum = num + 1
-print (f'{num} plus 1 = {newNum}')
+print (f'{num} plus 1 is {newNum}')
